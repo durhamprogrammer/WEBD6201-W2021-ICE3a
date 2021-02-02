@@ -4,9 +4,9 @@
 //AKA - Anonymous Self-Executing Function
 //Closure - limits scope leak
 
+// created a core namespace
 "use strict";
-
-(function()
+(function(core)
 {
     function displayHome()
     {
@@ -101,8 +101,8 @@
         let sendButton = document.getElementById("sendButton");
         sendButton.addEventListener("click", function(event){
             //event.preventDefault();
-            
-            let contact = new Contact(fullName.value, contactNumber.value, emailAddress.value);
+
+            let contact = new core.Contact(fullName.value, contactNumber.value, emailAddress.value);
 
             if(contact.serialize())
             {
@@ -124,7 +124,7 @@
         {
           let contactData = localStorage.getItem((index + 1).toString());
 
-          let contact = new Contact();
+          let contact = new core.Contact();
           contact.deserialize(contactData);
 
           data += `<tr>
@@ -171,4 +171,5 @@
 
     window.addEventListener("load", Start);
 
-})();
+
+})(core || (core = {}));
