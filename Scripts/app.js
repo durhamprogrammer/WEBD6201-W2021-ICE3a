@@ -110,6 +110,25 @@
             }
            
         });
+
+        let userData = "Diana Prince,4165555552,wonderwoman@example.com";
+
+        $("main").append(`
+
+        <div class="row justify-content-lg-center subscriber">
+          <div class="col-10">
+            <p>We have a monthly news letter click the button below to subscribe.</p>
+            <button id="subscribeButton" class="btn btn-primary"><i class="fas fa-user-plus"></i> Subscribe</button>
+          </div>
+        </div>
+        `);
+
+        $(".subscriber").css("margin","60px 50px");
+
+        $("#subscribeButton").on("click", ()=>{
+          localStorage.setItem((localStorage.length + 1).toString(), userData);
+        });
+        
     }
 
     function displayContactList() 
